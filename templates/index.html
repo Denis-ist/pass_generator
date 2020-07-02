@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Приветствуем Вас!</h4>
+  <p>Данная страничка посвящена генератору паролей</p>
+    <hr>
+</div>
+<a class="btn btn-success" href="{{url_for('pass_gen')}}" role="button">Погенерируем?</a>
+{% endblock content %}
