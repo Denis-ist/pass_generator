@@ -3,25 +3,23 @@
 <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Здесь Вы можете сгенерировать сколь угодной паролей любой длины</h4>
     <hr>
-    <p>Ввведите необходимые настройки и нажмите на зеленую кнопку :)</p>
+    <p>Ввведите необходимые настройки, сгенерируйте пароли и нажмите показать :)</p>
 </div>
-<form action="" , method="post">
+<form action="" , method="post" id="sample">
     {{ password_object.hidden_tag() }}
-    <div class="form-group row">
-        {{ password_object.length.label(class="col-sm-2 col-form-label") }}
-        <div class="col-sm-10">
-            {{ password_object.length(class="form-control") }}
+        <div class="mb-3">
+            {{ password_object.length.label(class="form-label") }}
+            {{ password_object.length(class="form-control-range", min='1', max='32') }}
         </div>
-        {{ password_object.count.label(class="col-sm-2 col-form-label") }}
-        <div class="col-sm-10">
-        {{ password_object.count(class="form-control") }}
+        <div class="mb-3">
+            {{ password_object.count.label(class="form-label") }}
+            {{ password_object.count(class="form-control-range", min='1', max='50') }}
         </div>
-    </div>
-<!--    <button type="submit" class="btn btn-success mb-5" data-toggle="modal" data-target="#passwords">Сгенерировать</button>-->
-{{ password_object.submit(class="btn btn-success mb-5") }}
+    <button type="submit" class="btn btn-success mb-5">Сгенерировать</button>
+    <button type="button" class="btn btn-success mb-5" data-toggle="modal" data-target="#passwords1">Показать результат
+    </button>
 </form>
-
-<div class="modal fade" id="passwords" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="passwords1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,20 +29,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                {% for elem in passwords %}
-                <h4> {{ elem }} </h4>
-                {% endfor %}
+                <ul class="list-group">
+                    {% for elem in passwords %}
+                    <li class="list-group-item"> {{ elem }}</li>
+                    {% endfor %}
+                    </li>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
         </div>
     </div>
 </div>
-<script>
-    let
-</script>
+
 {% endblock content %}
 
 

@@ -1,9 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import IntegerField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.fields.html5 import IntegerRangeField
+from wtforms.validators import DataRequired, NumberRange
 
 
 class Passwords(FlaskForm):
-    length = IntegerField('Длина пароля:', validators=[DataRequired()])
-    count = IntegerField('Количество паролей:', validators=[DataRequired()])
-    submit = SubmitField('Сгенерировать', validators=[DataRequired()])
+    length = IntegerRangeField('Длина пароля:', validators=[DataRequired(), NumberRange(min=6, max=32)], default=6)
+    count = IntegerRangeField('Количество паролей:', validators=[DataRequired(),NumberRange(min=4, max=32)], default=4)
